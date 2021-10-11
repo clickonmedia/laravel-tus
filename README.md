@@ -1,29 +1,10 @@
-# This is my package laravel-tus
+# Very short description of the package
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/clickonmedia/laravel-tus.svg?style=flat-square)](https://packagist.org/packages/clickonmedia/laravel-tus)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/clickonmedia/laravel-tus/run-tests?label=tests)](https://github.com/clickonmedia/laravel-tus/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/clickonmedia/laravel-tus/Check%20&%20fix%20styling?label=code%20style)](https://github.com/clickonmedia/laravel-tus/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/clickonmedia/laravel-tus.svg?style=flat-square)](https://packagist.org/packages/clickonmedia/laravel-tus)
+![GitHub Actions](https://github.com/clickonmedia/laravel-tus/actions/workflows/main.yml/badge.svg)
 
----
-This repo can be used to scaffold a Laravel package. Follow these steps to get started:
-
-1. Press the "Use template" button at the top of this repo to create a new repo with the contents of this laravel-tus
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files
-3. Remove this block of text.
-4. Have fun creating your package.
-5. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-tus.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-tus)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
 
 ## Installation
 
@@ -33,55 +14,39 @@ You can install the package via composer:
 composer require clickonmedia/laravel-tus
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --provider="Clickonmedia\LaravelTus\LaravelTusServiceProvider" --tag="laravel-tus-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-```bash
-php artisan vendor:publish --provider="Clickonmedia\LaravelTus\LaravelTusServiceProvider" --tag="laravel-tus-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
 ## Usage
 
 ```php
-$laravel-tus = new Clickonmedia\LaravelTus();
-echo $laravel-tus->echoPhrase('Hello, Clickonmedia!');
+// Usage description here
 ```
 
-## Testing
+### Testing
 
 ```bash
 composer test
 ```
 
-## Changelog
+### Changelog
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
 ## Contributing
 
-Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Security Vulnerabilities
+### Security
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+If you discover any security related issues, please email tech@clickon.co instead of using the issue tracker.
 
 ## Credits
 
-- [Levi Strange](https://github.com/clickonmedia)
-- [All Contributors](../../contributors)
+-   [clickonmedia](https://github.com/clickonmedia)
+-   [All Contributors](../../contributors)
 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+## Laravel Package Boilerplate
+
+This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
