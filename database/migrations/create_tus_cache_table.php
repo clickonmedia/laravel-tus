@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('tus_cache_table', function (Blueprint $table) {
+        Schema::create('tus_cache', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('key');
