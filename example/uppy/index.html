@@ -110,13 +110,38 @@
 
 <script src="https://transloadit.edgly.net/releases/uppy/v0.23.2/dist/uppy.min.js"></script>
 <script>
-  const uppy = Uppy.Core({debug: true, autoProceed: false})
+  const headers = {
+      authorization: `Bearer 8209f9083-0494`,
+  }
+  const uppy = Uppy.Core({
+    debug: true, 
+    autoProceed: false,
+    meta: {
+        "project_id": 1,
+        "asset_id": 121,
+        "internal": "true",
+        "upload_parent": 0,
+        "extension": "post_id",
+    }
+    })
     .use(Uppy.Dashboard, {target: '#uppyUploader', inline: true})
-    .use(Uppy.Tus, {endpoint: 'http://localhost:8080/files/'})
+    .use(Uppy.Tus, {
+        endpoint: '/files/',
+        chunkSize: 800000,
+        resume: false,
+        autoRetry: false,
+        storeFingerprintForResuming: true,
+        withCredentials: false,
+        limit:5
+        // retryDelays: [0, 1000, 3000, 5000]
+    })
     .run()
+    //uppy.setMeta({ csrf: '_xyz' });
 
   uppy.on('upload-success', (file, response) => {
-    uppy.setFileState(file.id, { uploadURL: `${response.url}/get` })
+    uppy.setFileState(file.id, { 
+        uploadURL: `${response.url}/get` 
+    })
   })
 </script>
 </body>
