@@ -83,10 +83,15 @@ class EloquentStore extends AbstractCache
             $contents[] = $value;
         }
 
-        $status = DB::table('tus_cache')->insert([
-            'key'   => $this->getPrefix() . $key,
-            'value' => json_encode($contents)
-        ]);
+        // $status = DB::table('tus_cache')->insert([
+        //     'key'   => $this->getPrefix() . $key,
+        //     'value' => json_encode($contents)
+        // ]);
+
+        $status = DB::table('tus_cache')->updateOrInsert(
+            ['key'   => $this->getPrefix() . $key],
+            ['value' => json_encode($contents)]
+        );
 
         // TODO if successfull return OK
         //return 'OK' === $status->getPayload();
