@@ -47,7 +47,7 @@ class EloquentStore extends AbstractCache
         }
 
         //$contents = $this->redis->get($key);
-        $result = DB::table('tus_cache_table')->where('key', $key)->first();
+        $result = DB::table('tus_cache')->where('key', $key)->first();
         //TODO add check for null return
         if (!isset($result->value)){
             return null;
@@ -83,7 +83,7 @@ class EloquentStore extends AbstractCache
             $contents[] = $value;
         }
 
-        $status = DB::table('tus_cache_table')->insert([
+        $status = DB::table('tus_cache')->insert([
             'key'   => $this->getPrefix() . $key,
             'value' => json_encode($contents)
         ]);
@@ -105,7 +105,7 @@ class EloquentStore extends AbstractCache
         }
 
         // return $this->redis->del([$key]) > 0;
-        return DB::table('tus_cache_table')->where('key', '=', $key)->delete();
+        return DB::table('tus_cache')->where('key', '=', $key)->delete();
     }
 
     /**
@@ -114,7 +114,7 @@ class EloquentStore extends AbstractCache
     public function keys() : array
     {
         // return $this->redis->keys($this->getPrefix() . '*');
-        $results = DB::table('tus_cache_table')->get()->pluck('value')->toArray();
+        $results = DB::table('tus_cache')->get()->pluck('value')->toArray();
         return $results;
 
     }
