@@ -127,7 +127,7 @@
     .use(Uppy.Dashboard, {target: '#uppyUploader', inline: true})
     .use(Uppy.Tus, {
         endpoint: '/files/',
-        chunkSize: 64000000,
+        chunkSize: 8000000,
         resume: false,
         autoRetry: false,
         storeFingerprintForResuming: true,
