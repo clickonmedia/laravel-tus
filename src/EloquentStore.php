@@ -1,17 +1,15 @@
 <?php
 namespace Clickonmedia\LaravelTus;
 
-// use TusPhp\Cache;
 use TusPhp\Cache\AbstractCache;
 use Carbon\Carbon;
 use TusPhp\Config;
-// use Predis\Client as RedisClient;
 use Illuminate\Support\Facades\DB;
 
 class EloquentStore extends AbstractCache
 {
-    /** @var RedisClient */
-    protected $redis;
+    /** @var EloquentClient */
+    protected $eloquent;
 
     /**
      * EloquentStore constructor.
@@ -20,20 +18,10 @@ class EloquentStore extends AbstractCache
      */
     public function __construct(array $options = [])
     {
-        $options = empty($options) ? Config::get('redis') : $options;
+        $options = empty($options) ? Config::get('eloquent') : $options;
 
-        // $this->redis = new RedisClient($options);
+        // $this->eloquent = new DB::table('tus_cache');
     }
-
-    /**
-     * Get redis.
-     *
-     * @return RedisClient
-     */
-    // public function getRedis() : RedisClient
-    // {
-    //     return $this->redis;
-    // }
 
     /**
      * {@inheritDoc}
@@ -46,7 +34,6 @@ class EloquentStore extends AbstractCache
             $key = $prefix . $key;
         }
 
-        //$contents = $this->redis->get($key);
         $result = DB::table('tus_cache')->where('key', $key)->first();
         //TODO add check for null return
         if (!isset($result->value)){
@@ -83,11 +70,6 @@ class EloquentStore extends AbstractCache
             $contents[] = $value;
         }
 
-        // $status = DB::table('tus_cache')->insert([
-        //     'key'   => $this->getPrefix() . $key,
-        //     'value' => json_encode($contents)
-        // ]);
-
         $status = DB::table('tus_cache')->updateOrInsert(
             ['key'   => $this->getPrefix() . $key],
             ['value' => json_encode($contents)]
@@ -109,7 +91,6 @@ class EloquentStore extends AbstractCache
             $key = $prefix . $key;
         }
 
-        // return $this->redis->del([$key]) > 0;
         return DB::table('tus_cache')->where('key', '=', $key)->delete();
     }
 
@@ -118,7 +99,7 @@ class EloquentStore extends AbstractCache
      */
     public function keys() : array
     {
-        // return $this->redis->keys($this->getPrefix() . '*');
+
         $results = DB::table('tus_cache')->get()->pluck('value')->toArray();
         return $results;
 
