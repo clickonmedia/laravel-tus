@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop('revisions');
+        Schema::drop('tus_cache');
     }
 };
