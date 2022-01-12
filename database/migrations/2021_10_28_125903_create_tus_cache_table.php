@@ -6,6 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::create('tus_cache', function (Blueprint $table) {
@@ -15,5 +20,15 @@ return new class extends Migration
             $table->longText('value');
             $table->index('key');
         });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('revisions');
     }
 };
